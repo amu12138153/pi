@@ -1,0 +1,6 @@
+spidev>=3.5
+gpiozero>=1.6
+lgpio>=0.2.2准备进行零点校准，请确保探头已在零氧溶液中静置稳定！
+❌ 校准失败: Checksum error in rtu mode: b'\x10\x10' instead of b'\x80"' . The response is: b'\x01\x06\x10\x10' (plain response: b'\x01\x06\x10\x10')
+
+Process finished with exit code 0
