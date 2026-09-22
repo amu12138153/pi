@@ -1,0 +1,55 @@
+<view class="container">
+  <view class="header">水质监测云平台</view>
+  
+  <view class="data-panel">
+    <view class="data-card">
+      <view class="label">水温 (°C)</view>
+      <view class="value {{sensor.temperature < 20 || sensor.temperature > 35 ? 'alarm' : ''}}">{{sensor.temperature || '--'}}</view>
+    </view>
+    <view class="data-card">
+      <view class="label">pH值</view>
+      <view class="value {{sensor.ph < 6.5 || sensor.ph > 8.5 ? 'alarm' : ''}}">{{sensor.ph || '--'}}</view>
+    </view>
+    <view class="data-card">
+      <view class="label">溶解氧 (mg/L)</view>
+      <view class="value {{sensor.dissolved_oxygen < 4 ? 'alarm' : ''}}">{{sensor.dissolved_oxygen || '--'}}</view>
+    </view>
+    <view class="data-card">
+      <view class="label">浊度 (NTU)</view>
+      <view class="value {{sensor.turbidity > 1000 ? 'alarm' : ''}}">{{sensor.turbidity || '--'}}</view>
+    </view>
+  </view>
+
+  <view class="divider"></view>
+
+  <view class="control-panel">
+    <view class="section-title">远程控制</view>
+    
+    <view class="control-item">
+      <view class="control-label">加热棒 (Heater)</view>
+      <switch checked="{{device.heater}}" bindchange="onSwitchChange" data-id="heater" color="#e74c3c"/>
+    </view>
+
+    <view class="control-item">
+      <view class="control-label">水泵 (Pump)</view>
+      <switch checked="{{device.pump}}" bindchange="onSwitchChange" data-id="pump" color="#3498db"/>
+    </view>
+    
+    <view class="control-item">
+      <view class="control-label">喂食机 (Feeder)</view>
+      <switch checked="{{device.feeder}}" bindchange="onSwitchChange" data-id="feeder" color="#f1c40f"/>
+    </view>
+
+    <view class="control-item">
+      <view class="control-label">声光报警</view>
+      <view class="sub-switches">
+        <text>声</text>
+        <switch checked="{{device.buzzer}}" bindchange="onSwitchChange" data-id="buzzer" style="transform: scale(0.7)"/>
+        <text style="margin-left:20rpx;">光</text>
+        <switch checked="{{device.led}}" bindchange="onSwitchChange" data-id="led" style="transform: scale(0.7)"/>
+      </view>
+    </view>
+  </view>
+  
+  <view class="footer">数据每5秒自动刷新</view>
+</view>
